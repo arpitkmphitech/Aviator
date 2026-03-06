@@ -1,0 +1,45 @@
+const API_ENDPOINTS = {
+  AUTH: {
+    LOGIN: "/auth/login",
+    REGISTER: "/auth/signUp",
+    FORGOT_PASSWORD: "/auth/forgotPassword",
+    VERIFY_OTP: "/auth/verifyOTP",
+    SEND_OTP: "/auth/sendOTP",
+    RESET_PASSWORD: "/auth/resetPassword",
+    GET_USER: "/auth/getUserDetails",
+    GET_LUGGAGE_LIST: "/auth/getLuggageList",
+  },
+  PROFILE: {
+    CHANGE_PASSWORD: "user/changePassword",
+    CONTACT_US: "user/contactUs",
+    UPDATE_PROFILE: "user/updateProfile",
+    AVAITER_LIST: "user/getAviatorList",
+    TRANSACTION_HISTORY: "user/userTransactionList",
+    CHARTER_LIST: "admin/getCharterList",
+    CHANGE_LANGUAGE: "user/updateLanguage",
+  },
+  WISHLIST: {
+    GET_WISHLIST: "wishFlight/getWishFlights",
+    WISH_FLIGHT_OFFER: "wishFlight/getWishFlightOffers",
+    UPDATE_BID_REQUEST_STATUS: "wishFlight/updateBidRequest",
+    GET_PROPOSAL_DETAILS: "wishFlight/getBookingDetails",
+    CHANGE_PASSWORD: "/user/changePassword",
+    CONTACT_US: "/user/contactUs",
+    CREATE_WISHLIGHT: "wishFlight/createWishFlight",
+  },
+  HOME: {
+    SEARCH_AVAILABLE_FLIGHTS: "/user/searchAvailableFlights",
+    GET_SORT_FLIGHT_LIST: "/user/getSortFlightList",
+    GET_AVAILABILITY_DETAILS: "/user/getAvailabilityDetails",
+    BOOK_FLIGHT: "/user/bookFlight",
+    GET_PILOT_RATINGS: "/user/getPilotRatings",
+    GET_MY_BOOKINGS: "/user/getMyBookings",
+    GET_BOOKING_DETAILS: "/user/getMyBookingDetails",
+    CANCEL_BOOKING: "/user/cancelBooking",
+    GET_PILOT_UPCOMING_FLIGHTS: "/user/getPilotUpcomingFlights",
+    UPDATE_BOOKING_STATUS: "/user/updateBookingStatus",
+    RATE_FLIGHT: "/user/rating",
+  },
+};
+
+export default API_ENDPOINTS;
