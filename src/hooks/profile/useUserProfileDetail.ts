@@ -12,8 +12,7 @@ export const useUserProfileDetail = (enabled: boolean) => {
   });
   return {
     userProfileDetail: data?.data,
-    isLoading: isLoading || isPending,
-    isFetching,
+    isLoading: isLoading || isPending || isFetching,
     isError,
     error,
   };

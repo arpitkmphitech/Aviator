@@ -16,7 +16,10 @@ import { useSendOtp } from "@/hooks/auth/useSendOtp";
 
 const RegisterOTP = () => {
   const router = useRouter();
-  const userData = JSON.parse(sessionStorage.getItem("userData") || "{}");
+  const userData =
+    typeof window !== "undefined"
+      ? JSON.parse(sessionStorage.getItem("userData") || "{}")
+      : {};
   const { register, isPending } = useRegister();
   const { sendOtp, isPending: isSendOtpPending } = useSendOtp();
   const methods = useForm({
@@ -48,7 +51,7 @@ const RegisterOTP = () => {
         otp: _values.otp,
         address: address?.display,
         profile: userProfile,
-        cCode,
+        cCode: cCode ?? "49",
         flag,
         lang: "en",
         userType: "traveller",

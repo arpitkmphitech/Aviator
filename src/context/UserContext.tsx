@@ -7,15 +7,17 @@ import { useTranslation } from "react-i18next";
 
 export const UserContext = createContext({
   user: "",
-  setUser: (user: any) => {},
+  setUser: (user: any) => { },
   isLoading: false,
 });
 
 const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const { i18n } = useTranslation();
   const { token } = useAuthStore();
-
-  const { userProfileDetail, isLoading } = useUserProfileDetail(!!token);
+  console.log(token);
+  const userId = sessionStorage.getItem("user_id");
+  const enabled = !!token && !!userId;
+  const { userProfileDetail, isLoading } = useUserProfileDetail(enabled);
   const [user, setUser] = useState("");
 
   useEffect(() => {
@@ -24,15 +26,13 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
     i18n.changeLanguage(userProfileDetail?.lang);
   }, [userProfileDetail, isLoading]);
 
+
   return (
     <UserContext.Provider value={{ user, setUser, isLoading }}>
-      {/* {isLoading ? (
-        <div className="min-h-dvh flex items-center justify-center">
-          <PageLoader />
-        </div>
-      ) : ( */}
-      {children}
-      {/* )} */}
+      {isLoading && enabled ? (<div className="min-h-dvh flex items-center justify-center">  <PageLoader /> </div>) : (
+        children
+      )}
+
     </UserContext.Provider>
   );
 };

@@ -47,3 +47,14 @@ export const QUERY_KEYS = {
   WISHLIST_OFFER: "wishlist-offer",
   BID_BOOKING_DETAIL: "bid-booking-detail",
 };
+
+export const AUTH_ROUTES = [
+  "/login",
+  "/register",
+  "/forgot-password",
+  "/reset-password",
+  "/register-verify-otp",
+  "/register-success",
+  "/profile-setup",
+  "/verify-otp",
+];

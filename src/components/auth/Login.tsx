@@ -14,6 +14,9 @@ import { useRouter } from "next/navigation";
 import useLogin from "@/hooks/auth/useLogin";
 import { IApiResponse } from "@/types/types";
 import md5 from "md5";
+import { useEffect } from "react";
+import Cookies from "js-cookie";
+import { useUser } from "@/hooks/useUser";
 
 const Login = () => {
   const router = useRouter();
@@ -22,6 +25,16 @@ const Login = () => {
     defaultValues: { email: "", password: "" },
     resolver: yupResolver(LoginSchema),
   });
+  const { setUser } = useUser();
+
+  useEffect(() => {
+    if (router) {
+      router.replace("/login");
+      Cookies.remove("token");
+      sessionStorage.removeItem("user_id");
+      setUser(null);
+    }
+  }, [router]);
 
   const { handleSubmit } = methods;
 
@@ -35,7 +48,7 @@ const Login = () => {
       } as ILoginRequest,
       {
         onSuccess: (data: IApiResponse) => {
-          router.push("/home");
+          router.replace("/home");
         },
       }
     );

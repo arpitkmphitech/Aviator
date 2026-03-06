@@ -64,8 +64,8 @@ function ProfileLayoutInner({ children }: { children: React.ReactNode }) {
               onClick={() => {
                 Cookies.remove("token");
                 sessionStorage.removeItem("user_id");
+                router.replace("/login")
                 setUser(null);
-                router.push("/login")
               }}
             >
               {t("login")}
